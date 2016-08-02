@@ -1,0 +1,481 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<link rel="stylesheet" type="text/css" href="css/icon/iconfont.css">
+<link rel="stylesheet" type="text/css" href="css/hongbao/iconfont.css">
+<script src="js/jquery.min.js"></script>
+<script>
+window.onload = function(){
+	
+	var c=document.getElementById("myred2");
+	var ctx=c.getContext("2d");
+	//红包文字canvas
+	ctx.beginPath();
+	ctx.fillStyle = "#E63442";
+	ctx.lineWidth = 20; 
+	ctx.rotate(-40*Math.PI/180);
+	ctx.font="120px Microsoft JhengHei";
+	ctx.fillText("￥",-80,200);
+	
+	ctx.strokeStyle = "#E63442";
+	ctx.rotate(50*Math.PI/180);
+	ctx.font="40px Microsoft JhengHei";
+	//ctx.strokeText("￥",260,-20);
+	ctx.closePath();
+	
+	/*ctx.strokeStyle = "#E32625";
+	ctx.lineWidth = 10;  
+	ctx.moveTo(40,-10);
+	ctx.lineTo(200,100);
+	ctx.lineTo(185,120);
+	ctx.stroke();*/
+
+	
+	var myred=document.getElementById("myred");
+	var ctx2=myred.getContext("2d");
+	ctx2.strokeStyle = "#E32625";
+	ctx2.lineWidth = 10;  
+	ctx2.beginPath();
+	ctx2.arc(-35,-40,100,0,0.4*Math.PI);
+	ctx2.stroke();
+	ctx.closePath();
+	
+	var myred3=document.getElementById("myred3");
+	var ctx3=myred3.getContext("2d");
+	ctx3.beginPath();
+	ctx2.lineWidth = 4;  
+	ctx3.fillStyle = "#E53542";
+	ctx3.rotate(35*Math.PI/180);
+	ctx3.font="40px Microsoft JhengHei";
+	ctx3.fillText("￥",160,-60);
+	
+	
+	var myred4=document.getElementById("myred4");
+	var ctx4=myred4.getContext("2d");
+	ctx4.beginPath();
+	ctx4.fillStyle="#D44937";
+	ctx4.rotate(45*Math.PI/180);
+	ctx4.fillRect(0,-130,250,200);
+	//海报红包画圆
+	var bb=document.getElementById("myblue");
+	var bbtx=bb.getContext("2d");
+	bbtx.beginPath();
+	bbtx.arc(130,50,10,0,360,false);
+	bbtx.fillStyle="#509FC9";//填充颜色,默认是黑色
+	bbtx.fill();//画实心圆
+	bbtx.closePath();
+	
+	var b2=document.getElementById("myblue2");
+	var bbtc=b2.getContext("2d");
+	bbtc.fillStyle="#92B3D2";
+	bbtc.rotate(10*Math.PI/180);
+	bbtc.fillRect(80,-80,600,400);
+	
+	
+	bbtx.beginPath();
+	bbtx.strokeStyle = "#509FC9";
+	bbtx.lineWidth = 5;    
+	bbtx.moveTo(70,100);  
+	bbtx.lineTo(100,70);  
+	bbtx.lineTo(140,100);   
+	bbtx.lineTo(200,60);
+	bbtx.lineTo(220,120); 
+	bbtx.stroke();             
+	bbtx.closePath();
+	//绘制2次贝塞尔曲线  
+	/*bbtx.beginPath(); 
+	bbtx.moveTo(70,100);  
+	bbtx.quadraticCurveTo(100,70,140,100,200,60,220,120); 
+	bbtx.strokeStyle = "red"; 
+	bbtx.stroke();  */ 
+	
+}
+</script>
+<script src="jquery.min.js"></script>
+<script>
+$(function(){
+	var testCanvas = $(".canvas");
+	testCanvas.each(function(index, element) {
+        var testcc = $(this).getContext("2d");
+		console.log(testcc);
+    });
+	//var testcc=testCanvas.getContext("2d");
+	
+	
+	$(".DivSelectl").click(function(){
+		$(this).toggleClass("colorstyle");
+		$(".menu2").toggle();
+		$(".menu").hide();
+		$(".leftsjd").toggle();
+		$(".leftsju").toggle();
+		$(".schild").click(function(){
+			$(".menu").hide();
+			$(".leftsjd").show();
+			$(".leftsju").hide();
+		});
+	});
+	$(".DivSelectr").click(function(){
+		$(this).toggleClass("colorstyle");
+		$(".menu2").hide();
+		$(".menu").toggle();
+		$(".rightsjd").toggle();
+		$(".rightsju").toggle();
+		$(".schild").click(function(){
+			$(".menu").hide();
+			$(".rightsjd").show();
+			$(".rightsju").hide();
+		});
+	});
+	$(".menu .lchild").each(function(index,domEle){
+		$(this).click(function(){
+			$(".DivSelectr").html($(this).html())
+			$(this).addClass("active").siblings(".lchild").removeClass("active");
+			$(".rchild").eq(index).css("display","block").siblings().css("display","none");
+		});	
+	});
+	$(".menu2 .lchild").each(function(index,domEle){
+		$(this).click(function(){
+			$(".DivSelectl").html($(this).html())
+			$(this).addClass("active").siblings(".lchild").removeClass("active");
+			$(".rchild").eq(index).css("display","block").siblings().css("display","none");
+		});	
+	});
+})
+</script>
+</head>
+
+<body>
+<div id="yk" style="height:100%;">
+	<!--    卡券365图片    -->
+    <div class="header">
+    	<img src="img/topbg.png">
+    </div>
+    
+    <!--    筛选部分    -->
+    <div class="select_parent">
+    	<div class="leftsjd"></div>
+        <div class="leftsju"></div>
+        <div class="rightsjd"></div>
+        <div class="zx" style=" height:40px; width:2px; background-color:#ccc; position:absolute; margin: 0 50%"></div>
+        <div class="rightsju"></div>
+            <div class="DivSelect DivSelectl">
+                全部分类
+                <!--<select class="SelectList">
+                    <option>全部分类</option>
+                    <option>2222</option>
+                    <option>3333</option>
+                    <option>4444</option>
+                </select>
+                -->
+            </div>
+           <div class="DivSelect DivSelectr">
+                离我最近
+                <!--<select class="SelectList">
+                    <option>离我最近</option>
+                    <option>2222</option>
+                    <option>3333</option>
+                    <option>4444</option>
+                </select>
+                -->
+           </div>
+    </div>
+    <div class="model">
+    	<!--折叠菜单-->
+        <div class="menu">
+            <div class="left zchild">
+                <div class="left1 lchild active">美国</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+            </div>
+            <div class="right zchild">
+                <div class="right1 rchild">
+                    <div class="schild">加利福尼亚</div>
+                    <div class="schild">华盛顿</div>
+                    <div class="schild">纽约</div>
+                    <div class="schild">旧金山</div>
+                    <div class="schild">222</div>
+                </div>
+                <div class="right2 rchild" style="display:none">
+                    <div class="schild">11</div>
+                    <div class="schild">11</div>
+                    <div class="schild">11</div>
+                    <div class="schild">11</div>
+                    <div class="schild">11</div>
+                </div>
+                <div class="right3 rchild" style="display:none">
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                    <div class="schild">江苏</div>
+                    <div class="schild">日本</div>
+                    <div class="schild">福建</div>
+                    <div class="schild">广东</div>
+                    <div class="schild">北京</div>
+                </div>
+            </div>
+        </div>
+        <!--折叠菜单-->
+        <div class="menu2">
+            <div class="left zchild" style="width:40%">
+                <div class="left1 lchild active">美国</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+                <div class="left2 lchild">英国</div>
+                <div class="left3 lchild">日本</div>
+            </div>
+        </div>
+        <!--    商家信息部分    -->
+        <div class="name">
+            <div class="icon logo">
+            </div>
+            <div class="logoint logo">
+                <p class="p1">海底捞火锅  (三山街店)</p>
+                <p class="p2">据您约232m</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+        <!--    红包部分     -->
+        <a id="red" class="main redbag">
+        <canvas id="myred" class="canvas" style="position:absolute; height:100px; width:200px;"></canvas>
+        <canvas id="myred2" style="position:absolute;left:32px; height:100px; width:200px;"></canvas>
+        <canvas id="myred3" style="position:absolute;left:35%; height:100px; width:200px;"></canvas>
+         <canvas id="myred4" style="position:absolute;height:100px; width:200px; opacity:0.1"></canvas>
+            <div class="main-left">
+                <div class="main-left1"></div>
+                <div class="main-left2"></div>
+            </div>
+            <div class="main-center">
+                <div class="main-center1 redcenter">
+                	<i class="iconfont1">&#xe61d;</i>
+                </div>
+                <div class="main-center2">
+                    <p class="pred">恭喜您摇中红包一个！</p>
+                    <br/>
+                    <p class="preds">手快有  手慢无</p>
+                </div>
+            
+                <div class="main_center red">
+                    立即拆开
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="main-right1"></div>
+                <div class="main-right2"></div>
+            </div>
+        </a>
+        
+        <!--    海报部分     -->
+        <a class="main bluebag">
+        <canvas id="myblue" style="position:absolute; height:100px; width:200px; left:35%;opacity:0.3"></canvas>
+        <canvas id="myblue2" style="position:absolute; height:100px; width:200px; left:35%;opacity:0.1"></canvas>
+            <div class="main-left">
+                <div class="main-left1"></div>
+                <div class="main-left2"></div>
+            </div>
+            <div class="main-center">
+                <div class="main-center1 bluecenter">
+                    
+                </div>
+                <div class="main-center2">
+                    <p class="pblue">恭喜您摇中海报一张！</p>
+                    <br/>
+                    <p class="pblues">点开更精彩</p>
+                </div>
+           
+                <div class="main_center blue">
+                    立即查看
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="main-right1"></div>
+                <div class="main-right2"></div>
+            </div>
+        </a>
+        
+        <!--    优惠券部分     -->
+        <a class="main yellowbag" style="background-color:#E4B138">
+            <div class="main-left">
+                <div class="main-left1"></div>
+                <div class="main-left2"></div>
+            </div>
+            <div class="main-center">
+                <div class="main-center1 yellowcenter">
+                    <i class="iconfont3" style="color:#E4B138">&#xe611;</i>
+                </div>
+                <div class="main-center2">
+                    <p class="pyellow">恭喜摇中优惠券一张！</p>
+                    <br/>
+                    <p class="pyellows">每满200元，减20元</p>
+                </div>
+                <div class="main_center yellow">
+                    立即领取
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="main-right1"></div>
+                <div class="main-right2"></div>
+            </div>
+        </a>
+    </div>
+    <div class="model">
+    	<div class="name">
+            <div class="icon logo">
+            </div>
+            <div class="logoint logo">
+                <p class="p1">海底捞火锅  (三山街店)</p>
+                <p class="p2">据您约232m</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--    红包部分     -->
+        <a id="red" class="main redbag">
+        <canvas id="myred" class="canvas" style="position:absolute; height:100px; width:200px;"></canvas>
+        <canvas id="myred2" style="position:absolute;left:32px; height:100px; width:200px;"></canvas>
+        <canvas id="myred3" style="position:absolute;left:35%; height:100px; width:200px;"></canvas>
+         <canvas id="myred4" style="position:absolute;height:100px; width:200px; opacity:0.1"></canvas>
+            <div class="main-left">
+                <div class="main-left1"></div>
+                <div class="main-left2"></div>
+            </div>
+            <div class="main-center">
+                <div class="main-center1 redcenter">
+                	<i class="iconfont1">&#xe61d;</i>
+                </div>
+                <div class="main-center2">
+                    <p class="pred">恭喜您摇中红包一个！</p>
+                    <br/>
+                    <p class="preds">手快有  手慢无</p>
+                </div>
+            
+                <div class="main_center red">
+                    立即拆开
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="main-right1"></div>
+                <div class="main-right2"></div>
+            </div>
+        </a>
+        
+        <!--    海报部分     -->
+        <a class="main bluebag">
+        <canvas id="myblue" style="position:absolute; height:100px; width:200px; left:35%;"></canvas>
+        <canvas id="myblue2" style="position:absolute; height:100px; width:200px; left:35%;opacity:0.1"></canvas>
+            <div class="main-left">
+                <div class="main-left1"></div>
+                <div class="main-left2"></div>
+            </div>
+            <div class="main-center">
+                <div class="main-center1 bluecenter">
+                    
+                </div>
+                <div class="main-center2">
+                    <h4>恭喜您摇中海报一张！</h4>
+                    <br/>
+                    <h5>点开更精彩</h5>
+                </div>
+           
+                <div class="main_center blue">
+                    立即查看
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="main-right1"></div>
+                <div class="main-right2"></div>
+            </div>
+        </a>
+        
+        <!--    优惠券部分     -->
+        <a class="main yellowbag" style="background-color:#E4B138">
+            <div class="main-left">
+                <div class="main-left1"></div>
+                <div class="main-left2"></div>
+            </div>
+            <div class="main-center">
+                <div class="main-center1 yellowcenter">
+                     <i class="iconfont3" style="color:#E4B138">&#xe611;</i>
+                </div>
+                <div class="main-center2">
+                    <h4>恭喜摇中优惠券一张！</h4>
+                    <br/>
+                    <h5>每满200元，减20元</h5>
+                </div>
+                <div class="main_center yellow">
+                    立即领取
+                </div>
+            </div>
+            <div class="main-right">
+                <div class="main-right1"></div>
+                <div class="main-right2"></div>
+            </div>
+        </a>
+    </div>
+    <div class="erro">
+    	<a><img src="img/cry.png"></a>
+    	<a class="erro">抱歉，当前列表为空</a>
+    </div>
+    <div class="end">
+    	<img src="img/ylogo.png">
+    </div>
+</div>
+</body>
+</html>
